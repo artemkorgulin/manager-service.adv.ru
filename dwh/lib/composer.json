@@ -1,0 +1,23 @@
+{
+  "description": "Examples for Google Ads API PHP Client Library",
+  "require": {
+    "googleads/googleads-php-lib": "^33.1.0",
+    "econea/nusoap": "v0.9.5.4",
+    "ext-SimpleXML": "^7.0",
+    "spatie/array-to-xml": "^2.7",
+    "zendframework/zend-soap": "^2.7"
+  },
+  "type": "project",
+  "homepage": "https://github.com/googleads/googleads-php-lib",
+  "license": "Apache-2.0",
+  "authors": [
+    {
+      "name": "Google",
+      "homepage": "https://github.com/googleads/googleads-php-lib/contributors"
+    }
+  ],
+  "scripts": {
+    "pre-update-cmd": "@php check_conditions.php",
+    "pre-install-cmd": "@php check_conditions.php"
+  }
+}

@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" value="" content="width=device-width, initial-scale=1">
+	<title>LAGen – Lander Action Generator</title>
+	<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet">
+	<style>
+		* {
+			outline: 0 !important;
+		}
+		html {
+			overflow-y: scroll;
+		}
+		option {
+			padding: 5px 10px;
+		}
+		optgroup {
+			padding: 10px 5px 5px;
+		}
+		ins {
+			text-decoration: none;
+			border-bottom: 1px dotted;
+			padding-bottom: 1px;
+			cursor: pointer;
+		}
+		samp textarea {
+			line-height: 1.25 !important;
+		}
+
+		.panel-body {
+			font-family: Consolas, monospace;
+		}
+		.popover {
+			font-size: 80%;
+		}
+		.popover ul {
+			padding: 0 0 0 1em;
+			margin: 0;
+		}
+
+		h6 {
+			font-size: 100%;
+			font-weight: bold;
+			margin: 12px 0 0;
+		}
+
+		.pager {
+			text-align: right;
+			margin: 6px 0 0;
+		}
+
+		#lander-code-html {
+			margin-top: 1em;
+		}
+
+		.autocomplete-suggestions { border: 1px solid #999; background: #FFF; overflow: auto; cursor: pointer; }
+		.autocomplete-suggestion { padding: 2px 5px; white-space: nowrap; overflow: hidden; }
+		.autocomplete-selected { background: #F0F0F0; }
+		.autocomplete-suggestions strong { font-weight: normal; color: #337AB7; }
+		.autocomplete-group { padding: 2px 5px; }
+		.autocomplete-group strong { display: block; color: #000; font-weight: bold; }
+	</style>
+</head>
+<body>
+
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12">
+
+				<h2>Генератор action для&nbsp;лендера</h2>
+
+				<form class="form-horizontal" action=".">
+					<div class="panel panel-default">
+						<div class="panel-heading">
+							<h3 class="panel-title">Задайте <span class="text-primary">обязательные</span> и&nbsp;<span class="text-success">дополнительные</span> параметры и&nbsp;ссылка обновится автоматически:</h3>
+						</div>
+						<div class="panel-body">
+							<div id="result-link">http://synergy.ru/lander/alm/lander.php?r=land/index</div>
+						</div>
+						<div class="panel-footer">
+							<button type="submit" class="btn btn-info" id="button-clipboard" data-clipboard-target="result-link">Скопировать</button>
+							<a href="" class="btn btn-default pull-right">Сбросить</a>
+						</div>
+					</div><!-- .panel -->
+
+					<div class="form-group">
+						<label for="form-field-unit" class="col-sm-1 control-label text-primary">unit</label>
+						<div class="col-sm-3">
+							<select name="unit" id="form-field-unit" required="true" class="form-control" data-toggle="popover" data-content="Определяет аккаунт, в&nbsp;зависимости от&nbsp;которого происходит переадресация на&nbsp;нужный обработчик, а&nbsp;также это поле записывается в&nbsp;Битрикс&nbsp;24.">
+								<option value="" class="hide">Выберите значение</option>
+								<option>synergy</option>
+								<option>sbs</option>
+								<option>Lingva</option>
+								<option>mosap</option>
+								<option>Egemetr</option>
+								<option>Megacampus</option>
+							</select>
+						</div>
+
+						<label for="form-field-type" class="col-sm-1 control-label text-primary">type</label>
+						<div class="col-sm-3">
+							<input type="text" name="type" value="" required="true" id="form-field-type" class="form-control" data-toggle="popover" data-content="Тип ленда, в&nbsp;зависимости от&nbsp;которого будут срабатывать условия отправки формы, например, для лендов&nbsp;ШБ:<ul><li>по умолчанию (пусто) - ленды/сайты без типа.</li><li>sm, kou - семинары, коучинги.</li><li>wb - вебинары.</li><li>mk - мастер-классы.</li><li>sub - подписные ленды.</li><li>sert - сертификат 5000.</li></ul>">
+						</div>
+
+						<label for="form-field-land" class="col-sm-1 control-label text-primary">land</label>
+						<div class="col-sm-3"><input type="text" name="land" value="" id="form-field-land" required="true" class="form-control" data-toggle="popover" data-content="Уникальное осмысленное название ленда латиницей без&nbsp;пробелов. Обычно берётся из&nbsp;части URI."></div>
+					</div><!-- .form-group -->
+
+					<div class="form-group">
+						<label for="form-field-version" class="col-sm-1 control-label text-success">version</label>
+						<div class="col-sm-5"><input type="text" name="version" value="" id="form-field-version" class="form-control" data-toggle="popover" data-content="Версия ленда, если необходимо (для&nbsp;А/Б тестов и&nbsp;не&nbsp;только).<br>Например, <ins>&lt;<span>?</span>=$_GET['version']<span>?</span>&gt;</ins>, <ins>[[!#GET.version]]</ins>"></div>
+
+						<label for="form-field-partner" class="col-sm-1 control-label text-success">partner</label>
+						<div class="col-sm-5"><input type="text" name="partner" value="<?=$_GET['partner']?>" id="form-field-partner" class="form-control" data-toggle="popover" data-content="Партнер ленда, необходимо в 99% случаев.<br>Например, <ins>&lt;<span>?</span>=$_GET['partner']<span>?</span>&gt;</ins>, <ins>[[!#GET.partner]]</ins>"></div>
+					</div><!-- .form-group -->
+
+					<div class="form-group">
+						<label for="form-field-form" class="col-sm-1 control-label text-success">form</label>
+						<div class="col-sm-5"><input type="text" name="form" value="" id="form-field-form" class="form-control" data-toggle="popover" data-content="Название формы: main, top, callme (формы обратного звонка, едины для&nbsp;всех), popup, психология или <ins>&lt;<span>?</span>=$form<span>?</span>&gt;</ins>"></div>
+
+						<label for="form-field-speaker" class="col-sm-1 control-label text-success">speaker</label>
+						<div class="col-sm-5"><input type="text" name="speaker" value="" id="form-field-speaker" class="form-control" data-toggle="popover" data-content="Фамилия/имя спикера, подставляется в&nbsp;письма."></div>
+					</div><!-- .form-group -->
+
+					<div class="form-group">
+						<label for="form-field-program" class="col-sm-1 control-label text-success">program</label>
+						<div class="col-sm-5"><input type="text" name="program" value="" id="form-field-program" class="form-control" data-toggle="popover" data-content="Название программы или варианта обучения по-русски, подставляется в&nbsp;письма и&nbsp;системы онлайн-оплат."></div>
+
+						<!-- <label for="form-field-product" class="col-sm-1 control-label text-success">product</label>
+						<div class="col-sm-3"><input type="text" name="product" value="" id="form-field-product" class="form-control" data-toggle="popover" data-content="ID&nbsp;продукта в&nbsp;Битрикс&nbsp;24"></div> -->
+
+						<label for="form-field-dater" class="col-sm-1 control-label text-success">dater</label>
+						<div class="col-sm-5"><input type="text" name="dater" value="" id="form-field-dater" class="form-control" data-toggle="popover" data-content="[Формат: любой (20-21 января 2050&nbsp;года в&nbsp;23:59)] - дата мероприятия, подставляется в&nbsp;письма пользователям."></div>
+					</div><!-- .form-group -->
+
+					<div class="form-group">
+						<label for="form-field-cost" class="col-sm-1 control-label text-success">cost</label>
+						<div class="col-sm-5"><input type="number" name="cost" value="" id="form-field-cost" class="form-control" data-toggle="popover" data-content="[Формат: только цифры (30000)] - стоимость продукта, подставляется в&nbsp;ссылку онлайн-оплаты."></div>
+
+						<label for="form-field-link" class="col-sm-1 control-label text-success">link</label>
+						<div class="col-sm-5"><input type="text" name="link" value="" id="form-field-link" class="form-control" data-toggle="popover" data-content="Ссылка для&nbsp;редиректа после отправки формы."></div>
+					</div><!-- .form-group -->
+
+					<div class="form-group">
+						<label for="form-field-graccount" class="col-sm-1 control-label text-success">graccount</label>
+						<div class="col-sm-5">
+							<!-- <input type="text" name="graccount" value="" id="form-field-graccount" class="form-control" data-toggle="popover" data-content="Аккаунт системы рассылок GetResponse"> -->
+							<select name="graccount" id="form-field-graccount" class="form-control" data-toggle="popover" data-content="Аккаунт системы рассылок GetResponse">
+								<option value="">&nbsp;</option>
+								<option>synergy</option>
+								<option>sbsedu</option>
+							</select>
+						</div>
+
+						<label for="form-field-grcampaign" class="col-sm-1 control-label text-success">grcampaign</label>
+						<div class="col-sm-5"><input type="text" name="grcampaign" value="" id="form-field-grcampaign" class="form-control" data-toggle="popover" data-content="Кампания системы рассылок GetResponse"></div>
+					</div><!-- .form-group -->
+
+				</form>
+
+				<div class="form-group">
+					<div class="col-sm-6">
+						<h6>HTML-код для подключения лендера</h6>
+					</div>
+					<div class="col-sm-5 col-sm-offset-1">
+						<ul class="pager">
+							<li>Для добавления новых полей и&nbsp;значений пишите <a href="mailto:aradul@synergy.ru?subject=LAGen - Доработка">aradul@</a></li>
+						</ul>
+					</div>
+					<div class="col-sm-12">
+						В head:
+						<samp>
+							<textarea rows="1" class="form-control" readonly>&lt;!--[if lt IE 9]&gt;&lt;script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"&gt;&lt;/script&gt;&lt;![endif]--&gt;&#10;&lt;!--[if gte IE 9]&gt;&lt;!--&gt;&lt;script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"&gt;&lt;/script&gt;&lt;!--&lt;![endif]--&gt;</textarea>
+						</samp>
+						<br>
+						В конце перед закрывающим body:
+						<samp>
+							<textarea rows="1" class="form-control" readonly>&lt;!-- Скрипт ALM Lander --&gt;&#10;&lt;script src="http://synergy.ru/lander/alm/js/lander.js"&gt;&lt;/script&gt;</textarea>
+						</samp>
+					</div><!-- .col -->
+				</div><!-- .form-group -->
+
+			</div><!-- .col -->
+		</div><!-- .row -->
+	</div><!-- .container -->
+
+	<!--[if lt IE 9]><script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script><![endif]-->
+	<!--[if gte IE 9]><!--><script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script><!--<![endif]-->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.devbridge-autocomplete/1.2.22/jquery.autocomplete.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/zeroclipboard/2.2.0/ZeroClipboard.min.js"></script>
+
+	<script>
+		$(function() {
+
+			/* Inits */
+			initPopover();
+			initForm();
+			initCopy();
+
+
+			/* Functions */
+			function initPopover(){
+				$('[data-toggle="popover"]').popover({
+					html: true,
+					trigger: 'focus',
+					placement: 'top'
+				});
+			}
+
+
+			function initForm(){
+				var
+				$form = $('form'),
+				$button_clipboard = $('#button-clipboard'),
+				$result_link = $('#result-link'),
+				default_link = $result_link.text(),
+				timer,
+
+				TYPES_LIST = [
+				{ value: 'consalt', data: { category: 'sbs' } },
+				{ value: 'kou', data: { category: 'sbs' } },
+				{ value: 'mba', data: { category: 'sbs' } },
+				{ value: 'mk', data: { category: 'sbs' } },
+				{ value: 'sert', data: { category: 'sbs' } },
+				{ value: 'sm', data: { category: 'sbs' } },
+				{ value: 'sub', data: { category: 'sbs' } },
+				{ value: 'wb', data: { category: 'sbs' } },
+
+				{ value: 'asp', data: { category: 'synergy' } },
+				{ value: 'bisfac', data: { category: 'synergy' } },
+				{ value: 'college', data: { category: 'synergy' } },
+				{ value: 'cut', data: { category: 'synergy' } },
+				{ value: 'distance', data: { category: 'synergy' } },
+				{ value: 'dod', data: { category: 'synergy' } },
+				{ value: 'dod-date-none', data: { category: 'synergy' } },
+				{ value: 'dod-mk', data: { category: 'synergy' } },
+				{ value: 'dod-wb', data: { category: 'synergy' } },
+				{ value: 'ege', data: { category: 'synergy' } },
+				{ value: 'eng', data: { category: 'synergy' } },
+				{ value: 'extreme', data: { category: 'synergy' } },
+				{ value: 'internet', data: { category: 'synergy' } },
+				{ value: 'lect', data: { category: 'synergy' } },
+				{ value: 'magistr', data: { category: 'synergy' } },
+				{ value: 'mba', data: { category: 'synergy' } },
+				{ value: 'mk', data: { category: 'synergy' } },
+				{ value: 'moms', data: { category: 'synergy' } },
+				{ value: 'online', data: { category: 'synergy' } },
+				{ value: 'perevod', data: { category: 'synergy' } },
+				{ value: 'proftest', data: { category: 'synergy' } },
+				{ value: 'regions', data: { category: 'synergy' } },
+				{ value: 'sert', data: { category: 'synergy' } },
+				{ value: 'sng', data: { category: 'synergy' } },
+				{ value: 'sub', data: { category: 'synergy' } },
+				{ value: 'system', data: { category: 'synergy' } },
+				{ value: 'testint', data: { category: 'synergy' } },
+				{ value: 'testkurs', data: { category: 'synergy' } },
+				{ value: 'univer', data: { category: 'synergy' } },
+				{ value: 'vpo', data: { category: 'synergy' } },
+				{ value: 'vvo', data: { category: 'synergy' } },
+				{ value: 'wb', data: { category: 'synergy' } },
+
+				{ value: '—', data: { category: 'Lingva' } },
+				{ value: 'adventure', data: { category: 'Lingva' } },
+				{ value: 'sub', data: { category: 'Lingva' } }
+				]
+				;
+
+				$form
+				.on('change init', function(event) {
+					event.preventDefault();
+
+					var params = '';
+					$(':input', this).each(function(index, el) {
+						if (!$(this).val()) return;
+						params += '&' + $(this).attr('name') + '=' + $(this).val();
+					});
+
+					if(params) {
+						params = params.replace(/&/g, '&amp;');
+						/*params = params.replace(/ /g, '+');*/
+						params = decodeURIComponent(params);
+						params = params.replace(/—/g, '');
+					}
+					$result_link.text( default_link + params );
+
+					$button_clipboard.text('Скопировать').removeClass('btn-success').addClass('btn-info');
+				})
+				.on('submit', function(event) {
+					event.preventDefault();
+
+					// console.log( this.checkValidity() );
+					$button_clipboard.text('Скопировано').addClass('btn-success').removeClass('btn-info');
+				})
+				.trigger('init')
+				;
+
+
+				$(':input', $form)
+				.on('init change keyup paste', function(event) { /* Handler for change */
+					var $el = $(this);
+
+					timer = setTimeout(function() { /* Trick for paste */
+						var param = $el.val();
+						$el.attr('value', param ).trigger('change');
+						$form.trigger('change');
+
+						if(event.type != 'paste') clearTimeout(timer);
+					}, 100);
+				})
+				.on('focus', function() { /* Handler for tooltips */
+					$( 'ins', '#' + $(this).attr('aria-describedby') ).on('click', function() {
+						$( 'input', $(this).closest('div[class^="col"]') ).val( $(this).text() ).trigger('change');
+					});
+				})
+				.trigger('init')
+				;
+
+
+				/* Фильтр списка типов для выбранного unit-а */
+				$('select[name="unit"]', $form).on('change', function() {
+					var
+					unit = $(this).val(),
+					selected_types_list = []
+					;
+
+					for (var item in TYPES_LIST) {
+						if (TYPES_LIST[item].data.category == unit) {
+							selected_types_list.push( TYPES_LIST[item] );
+						}
+					}
+
+					if ( !selected_types_list.length ) selected_types_list = TYPES_LIST;
+
+					$('input[name="type"]', $form).autocomplete().setOptions({
+						lookup: selected_types_list
+					});
+				});
+
+				/* Список типов */
+				$('input[name="type"]', $form)
+				.autocomplete({
+					lookup: TYPES_LIST,
+					minChars: 0,
+					groupBy: 'category',
+					onSelect: function () {
+						$(this).trigger('change');
+					}
+				})
+				.on('focus', function () {
+					$(this).autocomplete().onValueChange();
+				})
+				;
+
+				/* HTML-код в textarea */
+				$('samp textarea')
+				.on('focus click', function () {
+					$(this).select();
+				})
+				;
+			}
+
+
+			function initCopy(){
+				try {
+					ZeroClipboard.config( { swfPath: 'http://cdnjs.cloudflare.com/ajax/libs/zeroclipboard/2.2.0/ZeroClipboard.swf' } );
+				}
+				catch(e){}
+
+				var
+				$button_clipboard = $('#button-clipboard'),
+				clip = new ZeroClipboard( $button_clipboard )
+				;
+
+				clip
+				.on('ready', function() {
+					this.on('copy', function() {
+						if ($button_clipboard.hasClass('btn-success')) {
+							event.clipboardData.setData('text/plain', event.target.innerHTML);
+						}
+					});
+				})
+				.on('error', function() {
+					alert('Для комфортной работы установите или включите в настройках Adobe Flash Player.');
+				})
+				;
+			}
+
+		});
+	</script>
+
+</body>
+</html>

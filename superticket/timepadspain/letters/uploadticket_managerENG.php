@@ -1,0 +1,2 @@
+<?php
+	return 'Dear '.$name_manager.'!<br>The payment was made on account '.$row['orderId'].', issued in the name of '.$row['userName'].' '.date('"d" F Y').' года.<br>Receive tickets to Ticketmaster and for making tickets to the system and sending to the client go to the following link: <a href="http://synergy.ru/lander/alm/intellectmoneyPay.php?ticketsupload='.$mergelead.'">link for downloading tickets</a><br>Sincerely, your virtual assistant.'.$ticketinfo;

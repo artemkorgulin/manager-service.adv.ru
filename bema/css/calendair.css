@@ -1,0 +1,135 @@
+.calendair{
+	background-color: #fff;
+}
+.calendair__header{
+	text-align: center;
+}
+.calendair__points{
+	width: 1400px;
+	margin-left: 20px;
+	margin-right: 20px;
+}
+.calendair__point{
+	position: absolute;
+	text-align: center;
+	font-size: 16px;
+	top: 20px;
+	width: 67px;
+}
+.calendair__line{
+	width: 100%;
+	height: 4px;
+	background-color: #ccc;
+	position: relative;
+	margin-top: 184px;
+}
+.calendair__point:after{
+	position: absolute;
+	width: 16px;
+	height: 16px;
+	top: -26px;
+	left: calc(50% - 8px);
+	border-radius: 100%;
+	background-color: #f04e23;
+	border: 1px solid #f04e23;
+	content: '';
+}
+.calendair__point_nopoint:after{
+	display: none;
+}
+.calendair__point_nopoint:before{
+	content: '';
+	position: absolute;
+	width: 2px;
+	left: calc(50% - 2px);
+	top: -18px;
+    height: 11px;
+	background-color: #ccc;
+}
+.calendair__flag{
+	position: absolute;
+    left: calc(50% - 1px);
+    width: 2px;
+    background-color: #ccc;
+    height: 74px;
+    top: -91px;
+}
+.calendair__flag_left,
+.calendair__flag_right{
+	position: absolute;
+	top: 0;
+	border: 7px solid transparent;
+}
+.calendair__flag_left{
+	border-right: 16px solid #f04e23;
+	left: -24px;
+}
+.calendair__flag_right{
+	border-left: 16px solid #f04e23;
+	left: 3px;
+}
+.calendair__flag_active.calendair__flag_left{
+	border-right: 16px solid #2edae9;
+}
+.calendair__flag_active.calendair__flag_right{
+	border-left: 16px solid #2edae9;
+}
+.calendair__point_active:after{
+	background-color: #2edae9;
+	border-color: #2edae9;
+}
+.calendair__line-elapsed{
+	position: absolute;
+	left: 0;
+	top: 0;
+	height: 4px;
+	background-color: #2edae9;
+	width: 0;
+	z-index: 3;
+}
+.calendair__line-elapsed:after{
+	position: absolute;
+	width: 16px;
+	height: 16px;
+	top: -6px;
+	border-radius: 100%;
+	border: 1px solid #2edae9;
+	background-color: #fff;
+	right: -9px;
+	content: '';
+}
+.calendair__today-txt{
+	position: absolute;
+	top: -44px;
+	font-size: 16px;
+	line-height: 1;
+	text-align: center;
+}
+.calendair__today-cyan{
+	color: #2edae9;
+}
+.calendair__add-text{
+	position: absolute;
+	top: -80px;
+	font-size: 16px;
+	line-height: 1;
+	text-align: center;
+	top: -65px;
+}
+.calendair__add-text:before{
+	position: absolute;
+	content: '';
+	left: 30px;
+	right: 30px;
+	top: 0;
+	background-color: #ccc;
+	height: 2px;
+}
+.calendair__add-text-inner{
+	display: inline-block;
+	padding: 0 10px;
+	background-color: #fff;
+	position: relative;
+	z-index: 3;
+	margin-top: -25px;
+}

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="45px" height="26px" viewBox="0 0 45 26" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 50.2 (55047) - http://www.bohemiancoding.com/sketch -->
+    <title>Slice 1</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="volume-level" fill="#417505" fill-rule="nonzero">
+            <path d="M27.777,0.388 L5,0.388 C2.239,0.388 0,2.626 0,5.388 C0,8.15 2.239,10.388 5,10.388 L27.775,10.388 C30.537,10.388 32.775,8.15 32.775,5.388 C32.775,2.625 30.538,0.388 27.777,0.388 Z" id="Shape"></path>
+            <path d="M14.777,15.388 L5,15.388 C2.239,15.388 0,17.626 0,20.388 C0,23.15 2.239,25.388 5,25.388 L14.776,25.388 C17.537,25.388 19.776,23.15 19.776,20.388 C19.776,17.626 17.538,15.388 14.777,15.388 Z" id="Shape"></path>
+        </g>
+    </g>
+</svg>

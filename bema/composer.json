@@ -1,0 +1,11 @@
+{
+    "name": "synergy/bema",
+    "description": "Bema langing page",
+    "type": "project",
+    "license": "propietary",
+    "minimum-stability": "dev",
+    "require": {
+        "phpmailer/phpmailer": "dev-master",
+        "dompdf/dompdf": "dev-master"
+    }
+}

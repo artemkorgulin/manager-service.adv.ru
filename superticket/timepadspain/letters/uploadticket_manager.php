@@ -1,0 +1,2 @@
+<?php
+	return 'Уважаемый '.$name_manager.'!<br>Произведена оплата по счету '.$row['orderId'].', выписанного на имя '.$row['userName'].' '.date('"d" F Y').' года.<br>Получите билеты в Ticketmaster и для внесения билетов в систему и отправки клиенту перейдите по следующей ссылке: <a href="http://synergy.ru/lander/alm/intellectmoneyPay.php?ticketsupload='.$mergelead.'">ссылка для загрузки билетов</a><br>С уважением, ваш виртуальный помощник.'.$ticketinfo;

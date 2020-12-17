@@ -1,0 +1,148 @@
+.lander-invalid-input-error{
+	background-color: #ffc9c9;
+}
+
+.lander-widget-form-info{
+	font-size: 14px;
+	border: none;
+}
+.lander-widget-form-info th{
+	font-size: 16px;
+	padding: 8px;
+	text-align: center;
+}
+.lander-widget-form-info td{
+	padding: 2px 5px;
+}
+.lander-widget-form-info td:first-child{
+	text-align: right;
+}
+
+.lander-widget-form-privacy{
+	overflow: hidden !important;
+	clear: both !important;
+}
+.lander-widget-form-privacy__content{
+	position: relative !important;
+	z-index: 1 !important;
+	clear: both !important;
+	overflow: visible !important;
+	text-align: left !important;
+	color: #000 !important;
+	font-size: 13px !important;
+	line-height: 1.2 !important;
+	border: 1px solid rgba(0,0,0,0.1) !important;
+	background: rgba(255,255,255,0.7) !important;
+	padding: 20px 20px 20px 40px !important;
+	margin: 10px 0 !important;
+}
+.lander-widget-form-privacy__checkbox{
+	width: auto !important;
+	position: absolute !important;
+	top: 21px !important;
+	left: 20px !important;
+	opacity: 1 !important;
+	padding: 0 !important;
+	margin: 0 !important;
+	cursor: pointer;
+}
+.lander-inited[type="submit"][disabled] {
+	cursor: not-allowed !important;
+	opacity: 0.5;
+}
+.lander-widget-form-privacy__link{
+	display: inline !important;
+	vertical-align: baseline !important;
+	font-size: inherit !important;
+	color: inherit !important;
+	text-decoration: underline !important;
+}
+
+
+.lander-widget-privacy.fancybox-outer + .fancybox-close {
+	width: 35px;
+	height: 35px;
+	top: 30px;
+	right: 30px;
+	background: url('http://synergy.ru/assets/template/svg/icon-close-thin.svg') no-repeat;
+}
+.lander-widget-privacy.fancybox-close:before,
+.lander-widget-privacy.fancybox-close:after {
+	display: none;
+	content: initial;
+}
+.fancybox-privacy__content {
+	color: #182641 !important;
+	font-size: 16px;
+	font-family: 'Exo 2', 'exo_2.0', 'exo2_0', 'Exo2', sans-serif;
+	font-weight: 300;
+	line-height: 1.25;
+	background: #FFF;
+	padding: 40px 50px 50px;
+}
+.fancybox-privacy__content:hover *,
+.fancybox-privacy__content a {
+	color: inherit;
+}
+.fancybox-privacy__title {
+	color: #458AF3 !important;
+	font-size: 36px;
+	font-weight: 600;
+	text-transform: uppercase;
+	margin: 0 0 30px;
+}
+.fancybox-privacy__subtitle {
+	font-size: 24px;
+	font-weight: 600;
+}
+.fancybox-privacy__text {
+	padding: 0;
+	margin: 0 0 15px;
+}
+
+.fancybox-privacy__footer {
+	text-align: right;
+	margin: 40px 0 0;
+}
+.fancybox-privacy__footer-text {
+	max-width: 415px;
+	display: inline-block;
+	vertical-align: top;
+	color: #666666 !important;
+	font-size: 14px;
+	padding: 3px 0 10px;
+}
+.fancybox-privacy__footer-button {
+	width: 100%;
+	max-width: 215px;
+	display: inline-block;
+	height: 60px;
+	text-align: center;
+	color: #FFF !important;
+	font-size: 18px;
+	font-weight: normal;
+	line-height: 60px;
+	background: #458af3;
+	box-shadow: 3px 3px 3px #0000004d;
+	border-radius: 3px;
+	cursor: pointer;
+	opacity: 1;
+	transition: opacity 0.1s ease-in-out;
+	margin-left: 10px;
+}
+.fancybox-privacy__footer-button:hover {
+	opacity: 0.9
+}
+
+@media (max-width:640px) {
+	.fancybox-privacy__title,
+	.fancybox-privacy__subtitle {
+		font-size: 100%;
+	}
+}
+@media (max-width:480px) {
+	.fancybox-privacy__content {
+		color: #182641;
+		padding: 40px 20px 50px;
+	}
+}

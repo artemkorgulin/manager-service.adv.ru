@@ -1,0 +1,14 @@
+{
+    "name": "synergy/lander",
+    "description": "Lead retriever",
+    "type": "project",
+    "license": "propietary",
+    "minimum-stability": "dev",
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "Synergy\\lander\\": "source",
+            "Units\\": "units"
+        }
+    }
+}

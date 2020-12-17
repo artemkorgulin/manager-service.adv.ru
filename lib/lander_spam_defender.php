@@ -1,0 +1,1 @@
+/var/www/mfpa.ru/public/lander/alm/lander_spam_defender.php

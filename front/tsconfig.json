@@ -1,0 +1,19 @@
+{
+    "compilerOptions": {
+        "module": "amd",
+        "noImplicitAny": true,
+        "removeComments": true,
+        "preserveConstEnums": true,
+        "sourceMap": true,
+        "alwaysStrict": true,
+        "locale": "ru",
+        "target": "ES5",
+        "declaration": false,
+        "strict": true,
+        "inlineSourceMap": false,
+        "outFile": "js/lander3.0.js"
+    },
+    "include": [
+    	"src/*"
+    ]
+}

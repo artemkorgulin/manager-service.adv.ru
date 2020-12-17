@@ -1,0 +1,2 @@
+<?php
+	return 'Dear '.$name_regional.'!<br>The payment was made on account '.$row['orderId'].', issued in the name of '.$row['userName'].' '.date('"d" F Y').'.<br>A letter was sent to the manager in New York with a confirmation of payment to receive a ticket to Ticketmaster and a link for making tickets to the system and sending it to the client.<br>Sincerely, your virtual assistant.';

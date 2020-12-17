@@ -1,0 +1,2 @@
+<?php
+	return 'Dear '.$row['userName'].'!<br>The payment was made on account '.$row['orderId'].', issued in the name of '.$row['userName'].' '.date('"d" F Y').'.<br>Sincerely, your virtual assistant.';

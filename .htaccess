@@ -1,0 +1,12 @@
+<Files .htaccess>
+deny from 146.185.223.0/24
+<IfModule mod_headers.c>
+    Header set Access-Control-Allow-Origin "*"
+</IfModule>
+
+DirectoryIndex index.php
+
+ 
+
+
+</Files>

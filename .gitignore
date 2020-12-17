@@ -1,0 +1,11 @@
+~~*
+*.log
+*.pid
+_test
+-sd-
+*/logs/*
+units/sbs.edu.ru/logs/
+api/files/
+.idea
+lib/Browscap/*
+worker/new_daemons/db_job_queue.sql

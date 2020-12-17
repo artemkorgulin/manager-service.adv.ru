@@ -1,0 +1,2 @@
+<?php
+	return "Dear ".$row['userName']."!<br>Congratulations on your purchase of an educational package with a free ticket to the Synergy Global Forum in New York on October 27-28, 2017.<br>In the attachment please find the ticket included in the educational package to enter our event. The rest of the package options will be provided to you at the registration desk in the Madison Square Theater in New Yotk City.<br>Your personal manager will gladly answer all your questions.<br>See you in New York!<br>Sincerely, SGF NY 2017";

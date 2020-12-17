@@ -1,0 +1,118 @@
+Array
+(
+    [graccount] => testacc
+    [LMI_PREREQUEST] => 1
+    [LMI_PAYEE_PURSE] => 454977
+    [LMI_PAYMENT_AMOUNT] => 10.00
+    [LMI_PAYMENT_NO] => 
+    [LMI_MODE] => 0
+    [LMI_PAYER_PURSE] => IM1839261502
+    [LMI_PAYER_WM] => IM1839261502
+)
+
+Array
+(
+    [graccount] => testacc
+    [LMI_PREREQUEST] => 1
+    [LMI_PAYEE_PURSE] => 454977
+    [LMI_PAYMENT_AMOUNT] => 10.00
+    [LMI_PAYMENT_NO] => 
+    [LMI_MODE] => 0
+    [LMI_PAYER_PURSE] => IM1839261502
+    [LMI_PAYER_WM] => IM1839261502
+)
+
+Array
+(
+    [graccount] => testacc
+    [LMI_PREREQUEST] => 1
+    [LMI_PAYEE_PURSE] => 454977
+    [LMI_PAYMENT_AMOUNT] => 10.00
+    [LMI_PAYMENT_NO] => 
+    [LMI_MODE] => 0
+    [LMI_PAYER_PURSE] => IM1839261502
+    [LMI_PAYER_WM] => IM1839261502
+)
+
+Array
+(
+    [graccount] => testacc
+    [LMI_PREREQUEST] => 1
+    [LMI_PAYEE_PURSE] => 454977
+    [LMI_PAYMENT_AMOUNT] => 10.00
+    [LMI_PAYMENT_NO] => 
+    [LMI_MODE] => 0
+    [LMI_PAYER_PURSE] => IM1839261502
+    [LMI_PAYER_WM] => IM1839261502
+)
+
+Array
+(
+    [graccount] => testacc
+    [LMI_PREREQUEST] => 1
+    [LMI_PAYEE_PURSE] => 454977
+    [LMI_PAYMENT_AMOUNT] => 10.00
+    [LMI_PAYMENT_NO] => 
+    [LMI_MODE] => 0
+    [LMI_PAYER_PURSE] => IM1839261502
+    [LMI_PAYER_WM] => IM1839261502
+)
+
+Array
+(
+    [graccount] => testacc
+    [LMI_PREREQUEST] => 1
+    [LMI_PAYEE_PURSE] => 454977
+    [LMI_PAYMENT_AMOUNT] => 10.00
+    [LMI_PAYMENT_NO] => 
+    [LMI_MODE] => 0
+    [LMI_PAYER_PURSE] => IM1839261502
+    [LMI_PAYER_WM] => IM1839261502
+)
+
+Array
+(
+    [graccount] => testacc
+    [LMI_PREREQUEST] => 1
+    [LMI_PAYEE_PURSE] => 454977
+    [LMI_PAYMENT_AMOUNT] => 10.00
+    [LMI_PAYMENT_NO] => 
+    [LMI_MODE] => 0
+    [LMI_PAYER_PURSE] => IM1839261502
+    [LMI_PAYER_WM] => IM1839261502
+)
+
+Array
+(
+    [graccount] => testacc
+    [LMI_PAYEE_PURSE] => 454977
+    [LMI_PAYMENT_AMOUNT] => 10.00
+    [LMI_PAYMENT_ORIGINAL_AMOUNT] => 10.00
+    [LMI_PAYMENT_NO] => 
+    [LMI_MODE] => 0
+    [LMI_SYS_INVS_NO] => 3806454861
+    [LMI_SYS_TRANS_NO] => 3806454861
+    [LMI_PAYER_PURSE] => IM1839261502
+    [LMI_PAYER_WM] => IM1839261502
+    [LMI_SYS_TRANS_DATE] => 20161212 13:24:02
+    [LMI_SECRET_KEY] => 
+    [LMI_PAY_METHOD] => Acquiring
+    [LMI_SHORTPAN] => 
+    [LMI_COUNTRY] => 
+    [LMI_BANK] => 
+    [LMI_IP_ADDRESS] => 
+    [LMI_HASH] => 26698C70BD3E542FFB879158FE7D3AB9
+    [grcampaign] => testcamapign
+    [preference] => 
+)
+
+Array
+(
+    [r] => land/index
+    [unit] => intellectmoney
+    [graccount] => sbstest
+    [grcampaign] => testcampaign
+    [email] => mail@mail.com
+    [name] => NoName
+)
+
